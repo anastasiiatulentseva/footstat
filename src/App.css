@@ -22,3 +22,17 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.matches {
+  margin: 50px 20px 50px 20px;
+}
+
+.matches-table th, td {
+  text-align: center;
+  border: 1px solid #dddddd;
+}
+.matches-table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
