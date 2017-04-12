@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import { Table } from 'react-bootstrap';
 import Match from "./match";
 
 export default class Matches extends React.Component {
@@ -30,24 +31,24 @@ export default class Matches extends React.Component {
     const matches = this._getMatches();
     return (
       <div className="matches">
-        <table className="matches-table table-bordered">
+        <Table className="table matches-table table-hover">
           <thead>
             <tr className="match-list-header">
-              <td>
+              <th>
                 Date
-              </td>
-              <td>
+              </th>
+              <th>
                 Teams
-              </td>
-              <td>
+              </th>
+              <th>
                 Score
-              </td>
+              </th>
             </tr>
           </thead>
           <tbody>
             {matches}
           </tbody>
-        </table>
+        </Table>
       </div>
     );
   }
@@ -58,7 +59,6 @@ export default class Matches extends React.Component {
       url: 'http://localhost:3001/matches',
       success: (matches) => {
         this.setState({matches});
-        console.log (matches);
       }
     });
   }
