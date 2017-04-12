@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import MatchStatsItem from "./match_stats_item";
 import MatchStats from "./match_stats";
 
 export default class Match extends React.Component {
@@ -37,23 +36,15 @@ export default class Match extends React.Component {
       url: this.props.stats_url,
       success: (matchStats) => {
         this.setState({matchStats});
+        ReactDOM.render(
+          <MatchStats statsData={this._getMatchStats(this)} matchID={this.props.id}/>,
+          document.getElementById('match_stats')
+        );
       }
     });
-    console.log(this);
-    ReactDOM.render(
-      <MatchStats matchID={this.props.id}/>,
-      document.getElementById('match_stats')
-    );
   }
 
-  _getMatchStats() {
-    return this.state.matchStats.map((stats) => {
-      console.log("stats", stats);
-      return <MatchStatsItem
-        {...stats}
-        key={stats.id}
-      />
-    });
-
+  _getMatchStats(match) {
+    return match.state.matchStats;
   }
 }

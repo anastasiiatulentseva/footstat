@@ -14,11 +14,18 @@
 }
 
 .matches {
-  margin: 50px 20px 50px 20px;
+  margin: 40px 20px 20px 20px;
 }
 
 .matches-table {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+.matches-table th {
+  text-align: left;
+}
+
+.match-stats-table td, th, caption {
+  text-align: center;
 }

@@ -1,32 +1,41 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import MatchStatsItem from "./match_stats_item";
 
 export default class MatchStats extends React.Component {
 
   render () {
+    const matchStatsData = (
+      <tr>
+        <td>{this.props.statsData.played_on}</td>
+        <td>{this.props.statsData.score}</td>
+        <td>{this.props.statsData.duration}</td>
+        <td>{this.props.statsData.referee}</td>
+        <td>Y: {this.props.statsData.yellow_cards} / R: {this.props.statsData.red_cards}</td>
+        <td>{this.props.statsData.substitutions}</td>
+        <td>{this.props.statsData.city}</td>
+        <td>{this.props.statsData.tournament}</td>
+      </tr>
+    );
     return (
       <div className="matches">
         <Table className="table match-stats-table table-hover">
-          <caption>
-            {this.props.team1} - {this.props.team2} statistics
+          <caption className="match-stats-caption">
+            <h3>Match statistics</h3>
+            <small>{this.props.statsData.team1} - {this.props.statsData.team2}</small>
           </caption>
           <thead>
             <tr className="match-list-header">
               <th>
-              Date
-            </th>
-              <th>
-                Team1
-              </th>
-              <th>
-                Team2
+                Date
               </th>
               <th>
                 Score
               </th>
               <th>
                 Duration
+              </th>
+              <th>
+                Referee
               </th>
               <th>
                 Cards given
@@ -38,15 +47,12 @@ export default class MatchStats extends React.Component {
                 City
               </th>
               <th>
-                Referee
-              </th>
-              <th>
                 Tournament
               </th>
             </tr>
           </thead>
           <tbody>
-            <MatchStatsItem />
+            {matchStatsData}
           </tbody>
         </Table>
       </div>
